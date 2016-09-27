@@ -3,18 +3,16 @@
 	<defaultCache 
 		maxElementsInMemory="10000"
 		eternal="false"
-    	timeToIdleSeconds="120"
-    	timeToLiveSeconds="120" 
+    	timeToIdleSeconds="15"
+    	timeToLiveSeconds="15" 
     	overflowToDisk="false"
-    	diskSpoolBufferSizeMB="30"
-    	maxElementsOnDisk="10000000"
-    	diskPersistent="false"
-    	diskExpiryThreadIntervalSeconds="120"
     	memoryStoreEvictionPolicy="LRU" />
+    <!-- 
 	<cache
 		 name="org.hibernate.cache.StandardQueryCache"
 		 maxElementsInMemory="5"
 	 	 eternal="false"
-	 	 timeToLiveSeconds="120"
+	 	 timeToLiveSeconds="15"
 	 	 overflowToDisk="false"/>
+     -->	
 </ehcache>
