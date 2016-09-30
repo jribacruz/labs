@@ -1,11 +1,13 @@
 package foo.business;
 
+import java.util.List;
+
 import br.gov.frameworkdemoiselle.lifecycle.Startup;
 import br.gov.frameworkdemoiselle.stereotype.BusinessController;
 import br.gov.frameworkdemoiselle.template.DelegateCrud;
 import br.gov.frameworkdemoiselle.transaction.Transactional;
-
 import foo.domain.Bookmark;
+import foo.model.BookmarkModel;
 import foo.persistence.BookmarkDAO;
 
 @BusinessController
@@ -30,4 +32,7 @@ public class BookmarkBC extends DelegateCrud<Bookmark, Long, BookmarkDAO> {
 		}
 	}
 	
+	public List<BookmarkModel> findAllModels(){
+		return getDelegate().findAllModels();
+	}
 }
