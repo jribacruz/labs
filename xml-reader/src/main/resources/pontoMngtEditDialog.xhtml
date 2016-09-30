@@ -1,0 +1,363 @@
+<ui:composition
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+	<h:form id="ponto_mngt_edit_dialog_form_id">
+		<p:dialog
+			id="ponto_mngt_edit_dialog_id"
+			resizable="false"
+			draggable="true"
+			dynamic="true"
+			widgetVar="ponto_mngt_edit_dialog_wvar"
+			width="850"
+			closable="false"
+			modal="true"
+			showEffect="fade"
+			styleClass="x-ui-dialog">
+
+
+			<f:facet name="header">
+				<h:panelGroup id="ponto_mngt_edit_dialog_header_id">
+					<h:outputText value="Gerenciamento de Pontos de Transmissão " />
+				</h:panelGroup>
+			</f:facet>
+			<h:panelGroup id="ponto_mngt_edit_dialog_body_id">
+				<h:panelGroup id="info_id">
+					<h:panelGroup
+						styleClass="x-ui-warn"
+						rendered="#{fn:length(pontoMngtEditDialogMB.bean.locaisVotacao) == 0}">
+						<h:outputText value="O ponto de transmissão deve estar associado a pelo menos 1(um) local de votação para ser salvo." />
+					</h:panelGroup>
+				</h:panelGroup>
+				<h:panelGrid
+					columns="2"
+					cellpadding="0"
+					cellspacing="0"
+					width="100%"
+					style="vertical-align:top"
+					columnClasses="c1,c2">
+					<h:panelGrid columns="1">
+
+						<!-- NOME DO PONTO -->
+						<h:outputText
+							value="Nome do Ponto: "
+							styleClass="x-ui-label" />
+						<p:inputText
+							value="#{pontoMngtEditDialogMB.bean.nome}"
+							style="width: 390px; " />
+
+						<!-- DESCRIÇÃO -->
+						<h:outputText
+							value="Descrição: "
+							styleClass="x-ui-label" />
+						<p:inputText
+							value="#{pontoMngtEditDialogMB.bean.descricao}"
+							style="width: 390px; " />
+
+						<!-- ENDEREÇO -->
+						<h:outputText
+							value="Endereço: "
+							styleClass="x-ui-label" />
+						<p:inputText
+							value="#{pontoMngtEditDialogMB.bean.endereco}"
+							style="width: 390px; " />
+
+
+						<!-- DISTÂNCIA DO PONTO -->
+
+						<h:panelGrid
+							columns="3"
+							cellpadding="0"
+							cellspacing="0"
+							width="100%">
+							<h:panelGroup layout="block">
+								<h:outputText
+									value="Distância até o Cartório:"
+									styleClass="x-ui-label" />
+								<p:inputText
+									id="ponto_mngt_edit_dialog_distancia_id"
+									value="#{pontoMngtEditDialogMB.bean.distancia}"
+									style="width: 150px; "
+									title="Distância para o cartório" />
+								<p:tooltip
+									for="ponto_mngt_edit_dialog_distancia_id"
+									showEvent="mouseover"
+									trackMouse="false"
+									style="background-color:#4D7496; color:#F9F9F9" />
+							</h:panelGroup>
+							<h:panelGroup
+								style="margin-left: 5px; margin-right: 5px"
+								layout="block">
+								<!-- INÍCIO PREVISTO -->
+								<h:outputText
+									value="Início Previsto: "
+									styleClass="x-ui-label" />
+								<p:inputMask
+									mask="99/99/9999 99:99"
+									value="#{pontoMngtEditDialogMB.bean.inicioReal1T}"
+									style="width: 95px; ">
+									<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+								</p:inputMask>
+							</h:panelGroup>
+							<h:panelGroup layout="block">
+								<!-- TÉRMINO PREVISTO -->
+								<h:outputText
+									value="Término Previsto: "
+									styleClass="x-ui-label" />
+								<p:inputMask
+									mask="99/99/9999 99:99"
+									value="#{pontoMngtEditDialogMB.bean.inicioReal2T}"
+									style="width: 95px; ">
+									<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+								</p:inputMask>
+							</h:panelGroup>
+
+						</h:panelGrid>
+						<hr style="border: 0px; border-bottom: 1px solid #ddd; width: 100%" />
+
+						<!-- TIPO DO PONTO -->
+						<h:panelGroup layout="block">
+							<h:outputText
+								value="Tipo do Ponto:"
+								styleClass="x-ui-label"
+								style="margin-right: 10px" />
+							<ui:repeat
+								value="#{pontoMngtEditDialogMB.tipoPontoModel.fullList}"
+								var="tipoPonto">
+								<h:panelGroup
+									layout="block"
+									style="display: inline; margin-left: 5px; ">
+									<h:selectBooleanCheckbox value="#{pontoMngtEditDialogMB.tipoPontoModel.model[tipoPonto]}">
+										<p:ajax />
+									</h:selectBooleanCheckbox>
+									<h:outputText value="#{tipoPonto.nome}" />
+								</h:panelGroup>
+							</ui:repeat>
+						</h:panelGroup>
+						<hr style="border: 0px; border-bottom: 1px solid #ddd; width: 100%" />
+						<!-- PONTO DO PLANO B -->
+						<h:panelGroup>
+							<p:commandLink
+								value="Alterar"
+								action="#{pontoMngtPlanoBEditDialogMB.load(pontoMngtEditDialogMB.bean.zona.numero)}"
+								styleClass="x-ui-link x-ui-h-align-right"
+								process="@this" 
+								rendered="#{securityContext.hasRole('aelis2016.pontos.role.manager')}"/>
+							<h:outputText
+								value="Nome do Plano B"
+								styleClass="x-ui-label" />
+						</h:panelGroup>
+						<p:inputText
+							id="ponto_mngt_edit_dialog_planob_id"
+							value="#{pontoMngtEditDialogMB.bean.planoB}"
+							title="Informe o ponto de transmissão que funcionará como alternativa em caso de problemas"
+							style="width:390px; " />
+						<p:tooltip
+							for="ponto_mngt_edit_dialog_planob_id"
+							showEvent="mouseover"
+							trackMouse="false"
+							style="background-color:#4D7496; color:#F9F9F9" />
+						<!-- TEMPO DO PLANO B -->
+						<h:panelGroup>
+							<h:outputText
+								value="Tempo Plano B: "
+								styleClass="x-ui-label" />
+							<p:spinner
+								value="#{pontoMngtEditDialogMB.bean.tempoPlanoBHoras}"
+								size="10"
+								min="0"
+								max="23"
+								stepFactor="1"
+								styleClass="ui-spinner-input"
+								onkeypress="return false" />
+							<h:outputText
+								value="h "
+								styleClass="x-ui-label"
+								style="margin-left: 5px; display:inline" />
+							<p:spacer width="10" />
+							<p:spinner
+								value="#{pontoMngtEditDialogMB.bean.tempoPlanoBMinutos}"
+								size="10"
+								min="0"
+								max="59"
+								stepFactor="1"
+								styleClass="ui-spinner-input"
+								onkeypress="return false" />
+							<h:outputText
+								value="min"
+								styleClass="x-ui-label"
+								style="margin-left: 5px; display:inline" />
+						</h:panelGroup>
+					</h:panelGrid>
+
+					<!-- SEGUNDA COLUNA -->
+					<h:panelGrid
+						cellpadding="0"
+						cellspacing="0"
+						style="margin-left: 15px"
+						width="390px"
+						columns="1">
+
+						<!-- LOCAIS DE VOTAÇÃO -->
+						<h:panelGroup id="lvlist_id">
+							<p:commandLink
+								value="Alterar"
+								action="#{pontoMngtLocalVotacaoSelectionDialogMB.load(pontoMngtEditDialogMB.bean)}"
+								styleClass="x-ui-link x-ui-h-align-right"
+								process="@this" 
+								rendered="#{securityContext.hasRole('aelis2016.pontos.role.manager')||securityContext.hasRole('aelis2016.pontos.role.manager.edit')}"/>
+							<h:outputText
+								value="Locais de Votação Associdados ao Ponto (#{fn:length(pontoMngtEditDialogMB.bean.locaisVotacao)})"
+								styleClass="x-ui-label" />
+							<h:panelGroup
+								layout="block"
+								styleClass="x-ui-list"
+								style="max-height: 110px; min-height: 110px; overflow-y:auto; border: 1px solid #ddd;">
+								<ui:repeat
+									var="lv"
+									value="#{pontoMngtEditDialogMB.bean.locaisVotacao}">
+									<h:panelGroup styleClass="x-ui-list-item-container">
+										<h:outputText
+											styleClass="x-ui-list-item"
+											title="#{lv.numero} - #{lv.nome}"
+											value="#{lv.numero} - #{lv.nome}"
+											style="max-width: 350px;" />
+									</h:panelGroup>
+								</ui:repeat>
+								<!-- EMPTY LIST -->
+								<h:panelGroup
+									layout="block"
+									style="margin-top:80px; text-align:center; color: #bbb; font-weight: bold; font-size: 13px"
+									rendered="#{fn:length(pontoMngtEditDialogMB.bean.locaisVotacao) == 0}">
+									<h:outputText value="Sem locais de votação associados ao ponto." />
+								</h:panelGroup>
+							</h:panelGroup>
+						</h:panelGroup>
+
+						<p:spacer height="10" />
+
+						<!-- INFORMACOES DE DESLOCAMENTO DO PONTO -->
+						<h:outputText
+							value="Informações de Deslocamento do Ponto"
+							styleClass="x-ui-label" />
+						<h:panelGroup
+							layout="block"
+							styleClass="x-ui-list"
+							style="max-height: 110px; min-height: 110px; overflow-y:auto; border: 1px solid #ddd; padding: 4px">
+							<ui:repeat
+								value="#{pontoMngtEditDialogMB.infoPontoDeslocamentoModel.fullList}"
+								var="infoPontoDeslocamento">
+								<h:panelGroup
+									layout="block"
+									style="display: block; ">
+									<h:selectBooleanCheckbox value="#{pontoMngtEditDialogMB.infoPontoDeslocamentoModel.model[infoPontoDeslocamento]}">
+										<p:ajax />
+									</h:selectBooleanCheckbox>
+									<h:outputText value="#{infoPontoDeslocamento.nome}" style="font-size:12PX"  />
+								</h:panelGroup>
+							</ui:repeat>
+						</h:panelGroup>
+						
+						<p:spacer height="10" />
+						
+						<!-- INFORMACOES DE CONECTIVIDADE DO PONTO -->
+						<h:outputText
+							value="Informações de Conectividade do Ponto"
+							styleClass="x-ui-label" />
+						<h:panelGroup
+							layout="block"
+							styleClass="x-ui-list"
+							style="max-height: 110px; min-height: 110px; overflow-y:auto; border: 1px solid #ddd; padding: 4px">
+							<ui:repeat
+								value="#{pontoMngtEditDialogMB.infoPontoConectividadeModel.fullList}"
+								var="infoPontoConectividade">
+								<h:panelGroup
+									layout="block"
+									style="display: block; ">
+									<h:selectBooleanCheckbox value="#{pontoMngtEditDialogMB.infoPontoConectividadeModel.model[infoPontoConectividade]}">
+										<p:ajax />
+									</h:selectBooleanCheckbox>
+									<h:outputText value="#{infoPontoConectividade.nome}" style="font-size:12PX" />
+								</h:panelGroup>
+							</ui:repeat>
+						</h:panelGroup>
+					</h:panelGrid>
+				</h:panelGrid>
+			</h:panelGroup>
+			<f:facet name="footer">
+				<h:panelGroup id="ponto_mngt_edit_dialog_footer_id">
+					<!-- SALVAR -->
+					<p:commandButton
+						value="Salvar"
+						action="#{pontoMngtEditDialogMB.save()}"
+						process="@form"
+						styleClass="x-ui-button x-ui-btn-b-blue"
+						disabled="#{fn:length(pontoMngtEditDialogMB.bean.locaisVotacao) == 0}"
+						rendered="#{securityContext.hasRole('aelis2016.pontos.role.manager')||securityContext.hasRole('aelis2016.pontos.role.manager.edit')}" />
+					<p:spacer/>
+					<!-- VALIDAR -->
+					<p:commandButton
+						value="Validar"
+						onclick="PF('ponto_validar_wvar').show(); return false;"
+						process="@form"
+						style="margin-left:5px"
+						styleClass="x-ui-button"
+						disabled="#{pontoMngtEditDialogMB.bean.id == null||fn:length(pontoMngtEditDialogMB.bean.locaisVotacao) == 0}"
+						rendered="#{securityContext.hasRole('aelis2016.pontos.role.manager')||securityContext.hasRole('aelis2016.pontos.role.manager.edit')}" />
+					<p:spacer/>
+					<!-- EXCLUIR -->
+					<p:commandButton
+						value="Excluir"
+						onclick="PF('ponto_excluir_wvar').show(); return false;"
+						process="@this"
+						styleClass="x-ui-button x-ui-btn-f-red"
+						style="margin-left:10px"
+						disabled="#{fn:length(pontoMngtEditDialogMB.bean.locaisVotacao) == 0}"
+						rendered="#{securityContext.hasRole('aelis2016.pontos.role.manager')||securityContext.hasRole('aelis2016.pontos.role.manager.edit')}" />
+					<!-- FECHAR -->
+					<p:commandLink
+						value="Fechar"
+						action="#{pontoMngtEditDialogMB.cancel()}"
+						styleClass="x-ui-link"
+						style="margin-left: 10px;float:right"
+						process="@this" />
+				</h:panelGroup>
+			</f:facet>
+		</p:dialog>
+		<!-- DIALOG DE CONFIRMAÇÃO DE VALIDAÇÃO -->
+
+		<p:dialog
+			widgetVar="ponto_validar_wvar"
+			header="Validar Ponto"
+			modal="true">
+			<h:panelGroup
+				layout="block"
+				style="display: block">
+				<h:outputText
+					value="Você tem certeza que deseja validar o ponto de transmissão? "
+					style="display:block; text-align:center" />
+			</h:panelGroup>
+			<f:facet name="footer">
+				<!-- SIM -->
+				<p:commandButton
+					value="Sim"
+					styleClass="ui-confirmdialog-yes"
+					icon="ui-icon-check"
+					onclick="PF('ponto_validar_wvar').hide();PF('ponto_mngt_edit_dialog_wvar').hide();"
+					actionListener="#{pontoMngtPontoListMB.clear()}"
+					action="#{pontoMngtEditDialogMB.validaPonto()}" />
+				<!-- NAO -->
+				<p:commandButton
+					value="Não"
+					type="button"
+					styleClass="ui-confirmdialog-no"
+					icon="ui-icon-check"
+					onclick="PF('ponto_validar_wvar').hide()"
+					process="@this" />
+			</f:facet>
+		</p:dialog>
+	</h:form>
+</ui:composition>
