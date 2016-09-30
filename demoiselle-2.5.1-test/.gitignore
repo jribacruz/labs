@@ -1,6 +1,6 @@
 /target/
 /.settings/
-/home/
+/opt/
 /.classpath
 /.project
 /.tern-project
