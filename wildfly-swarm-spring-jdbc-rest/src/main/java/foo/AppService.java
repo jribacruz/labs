@@ -11,7 +11,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Produces;
 
 @Path("/hello")
-public class AppHello {
+public class AppService {
 
 	@Inject
 	private FooDAO dao;
