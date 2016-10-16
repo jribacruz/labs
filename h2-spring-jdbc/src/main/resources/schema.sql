@@ -1,0 +1,1 @@
+create table tbx(id integer, name varchar(100));
