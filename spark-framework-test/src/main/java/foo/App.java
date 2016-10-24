@@ -11,6 +11,6 @@ public class App {
 		/**
 		 * Porta padrão 4567
 		 */
-		Spark.get("/hello", (req, res) -> "Hello World");
+		Spark.get("/hello", new IndexRoute());
 	}
 }
