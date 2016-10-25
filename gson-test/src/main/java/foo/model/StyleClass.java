@@ -1,36 +1,27 @@
 package foo.model;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StyleClass {
+public class StyleClass implements Serializable {
 
-	private String id;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
-	private Map<String, Object> style;
+	private Map<String, StyleElement> element;
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String key) {
-		this.id = key;
-	}
-
-	public Map<String, Object> getStyle() {
-		if (this.style == null) {
-			this.style = new HashMap<>();
+	public Map<String, StyleElement> getStyleElement() {
+		if (this.element == null) {
+			this.element = new HashMap<>();
 		}
-		return style;
+		return element;
 	}
 
-	public void setStyle(Map<String, Object> property) {
-		this.style = property;
-	}
-
-	@Override
-	public String toString() {
-		return "StyleClass [id=" + id + ", style=" + style + "]";
+	public void setStyleElement(Map<String, StyleElement> styleElement) {
+		this.element = styleElement;
 	}
 
 }
