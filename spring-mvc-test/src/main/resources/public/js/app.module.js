@@ -9,6 +9,6 @@
 (function() {
 	'use strict';
 
-	angular.module("springMVCMD", [ ]);
+	angular.module("springMVCMD", [ 'ngResource' ]);
 
 })();

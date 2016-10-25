@@ -6,8 +6,17 @@
 </head>
 <body ng-app="springMVCMD">
 	{{1+1}}
+	
+	<div ng-controller="IndexCT as indexCT">
+		<p>Do server: {{indexCT.grettings.label}}</p>
+	</div>
+	
     <p th:text="'Hello, ' + ${name} + '!'" />
     <script src="/js/components/angular/1.8.5/angular.min.js"></script>
+    <script src="/js/components/angular/1.8.5/dependencies/angular-resource.min.js"></script>
     <script src="/js/app.module.js"></script>
+    <script src="/js/components/angular/1.8.5/dependencies/angular-resource.min.js"></script>
+    <script src="/js/services/index.service.js"></script>
+    <script src="/js/controllers/index.controller.js"></script>
 </body>
 </html>
