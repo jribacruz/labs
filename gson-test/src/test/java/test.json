@@ -1,0 +1,10 @@
+{
+	"element": {
+		"#ponto.transmissao.id": {
+			"style": {
+				"font-size": 1,
+				"font-family": "Verdana"
+			}
+		}
+	}
+}
