@@ -15,7 +15,7 @@ public class IndexController implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@RequestMapping("/")
+	@RequestMapping("/index")
 	public String greeting(@RequestParam(value = "name", required = false, defaultValue = "World") String name, Model model) {
 		model.addAttribute("name", name);
 		return "index";

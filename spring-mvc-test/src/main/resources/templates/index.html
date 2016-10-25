@@ -4,7 +4,10 @@
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
-<body>
+<body ng-app="springMVCMD">
+	{{1+1}}
     <p th:text="'Hello, ' + ${name} + '!'" />
+    <script src="/js/components/angular/1.8.5/angular.min.js"></script>
+    <script src="/js/app.module.js"></script>
 </body>
 </html>
