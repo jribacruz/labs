@@ -17,6 +17,7 @@ public class App {
 		Question question = new Question();
 		question.setTitle("Acessibilidade");
 		question.getItens().add(new Item("Possui escadas adaptadas.", "true"));
+		question.getItens().add(new Item("Possui salas adaptadas.", "false"));
 		
 		serializer.write(question, System.out);
 	}
