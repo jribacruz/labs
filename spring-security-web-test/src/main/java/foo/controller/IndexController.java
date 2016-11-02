@@ -20,6 +20,12 @@ public class IndexController implements Serializable {
 		model.addAttribute("name", name);
 		return "index";
 	}
+	
+	@RequestMapping("/dashboard")
+	public String dashboard(@RequestParam(value = "name", required = false, defaultValue = "World") String name, Model model) {
+		model.addAttribute("name", name);
+		return "dashboard";
+	}
 
 
 }
