@@ -42,9 +42,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		// @formatter:off
 		http
 			.authorizeRequests()
-				.antMatchers("/index").hasRole("MNGT")
-				.antMatchers("/dashboard").hasRole("USER")
-				.anyRequest().authenticated()
+				.antMatchers("/mngt/**").hasRole("MNGT")
+				.antMatchers("/user/**").hasRole("USER")
 			.and()
 			.formLogin()
 				.successHandler(new DefaultAuthenticationSuccessHandler())
@@ -82,9 +81,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
 			if (isUser) {
-				redirectStrategy.sendRedirect(req, res, "/dashboard.html");
+				redirectStrategy.sendRedirect(req, res, "/user/index");
 			} else if (isAdmin) {
-				redirectStrategy.sendRedirect(req, res, "/index.html");
+				redirectStrategy.sendRedirect(req, res, "/mngt/index");
 			} else {
 				throw new IllegalStateException();
 			}

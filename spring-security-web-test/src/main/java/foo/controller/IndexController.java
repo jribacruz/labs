@@ -15,16 +15,16 @@ public class IndexController implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@RequestMapping("/index")
+	@RequestMapping("/user/index")
 	public String greeting(@RequestParam(value = "name", required = false, defaultValue = "World") String name, Model model) {
 		model.addAttribute("name", name);
-		return "index";
+		return "user/index";
 	}
 	
-	@RequestMapping("/dashboard")
+	@RequestMapping("/mngt/index")
 	public String dashboard(@RequestParam(value = "name", required = false, defaultValue = "World") String name, Model model) {
 		model.addAttribute("name", name);
-		return "dashboard";
+		return "mngt/index";
 	}
 
 
