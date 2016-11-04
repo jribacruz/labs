@@ -36,6 +36,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.roles("MNGT");
  		// @formatter:on
 	}
+	
+	
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -44,11 +46,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.authorizeRequests()
 				.antMatchers("/mngt/**").hasRole("MNGT")
 				.antMatchers("/user/**").hasRole("USER")
+				.anyRequest().authenticated()   
+			.and()
+			.logout()
 			.and()
 			.formLogin()
-				.successHandler(new DefaultAuthenticationSuccessHandler())
-			.and()
-			.httpBasic();
+				.successHandler(new DefaultAuthenticationSuccessHandler());
 		// @formatter:on
 
 	}

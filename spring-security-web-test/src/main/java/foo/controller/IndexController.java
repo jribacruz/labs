@@ -26,6 +26,10 @@ public class IndexController implements Serializable {
 		model.addAttribute("name", name);
 		return "mngt/index";
 	}
-
-
+	
+	@RequestMapping("/login")
+	public String login() {
+		return "login";
+	}
+	
 }
