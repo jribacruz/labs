@@ -42,7 +42,7 @@ public class Wro4jConfiguration {
 		for (String name : OTHER_WRO_PROP) {
 			addProperty(env, prop, name);
 		}
-		log.debug("WRO4J properties {}", prop);
+		log.info("WRO4J properties {}", prop);
 		return prop;
 	}
 

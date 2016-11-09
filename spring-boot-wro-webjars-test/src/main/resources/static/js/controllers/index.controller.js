@@ -19,7 +19,7 @@
 		$log.debug('[IndexCT] Inicializando Controller...');
 		var self = this;
 		
-		self.grettings = IndexSV.resource.get();
+		self.foos = IndexSV.resource.query();
 		
 	}
 })();

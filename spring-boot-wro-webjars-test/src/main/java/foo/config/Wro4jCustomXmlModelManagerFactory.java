@@ -27,7 +27,7 @@ public class Wro4jCustomXmlModelManagerFactory extends ConfigurableWroManagerFac
 
 	@Override
 	protected WroModelFactory newModelFactory() {
-		log.debug("loading from /wro.xml");
+		log.info("loading from /wro.xml");
 		return new XmlModelFactory() {
 			@Override
 			protected InputStream getModelResourceAsStream() throws IOException {

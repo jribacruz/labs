@@ -19,7 +19,7 @@
 
 		var api = {}
 
-		var resource = $resource('http://localhost:8080/services/names/:id', {
+		var resource = $resource('http://localhost:8080/foos/:id', {
 			id : '@id'
 		}, api);
 

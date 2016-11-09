@@ -5,14 +5,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body ng-app="springMVCMD">
-	{{1+1}}
-	<!-- 
 	<div ng-controller="IndexCT as indexCT">
-		<p>Do server: {{indexCT.grettings.label}}</p>
+		<div ng-repeat="foo in indexCT.foos">
+			<p>Foos server: {{foo.name}}</p>
+		</div>
 	</div>
-	 -->
-	
-    <p th:text="'Hello, ' + ${name} + '!'" />
-     <script src="/wro/global.js"></script>
+    <script src="/wro/global.js"></script>
 </body>
 </html>
