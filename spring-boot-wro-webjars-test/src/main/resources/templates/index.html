@@ -23,11 +23,20 @@
 		        </md-toolbar>
 				
 				<md-content flex="">
+					 <md-virtual-repeat-container style="height:100%">
+					 	<div md-virtual-repeat="foo in indexCT.dynamicItems" md-on-demand=""
+					          class="repeated-item" flex="" style="height:100%">
+					        {{foo}}
+					    </div>
+					 </md-virtual-repeat-container>
+				
+						<!-- 
 					<md-container flex="" style="height:100%">
 						<div ng-repeat="foo in indexCT.fooModel.foos">
 					        {{foo.name}}
 					    </div>			
 					</md-container>
+						 -->
 				</md-content>
 								
 		     </md-sidenav>

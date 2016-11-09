@@ -80,7 +80,7 @@
 			}));
 		};
 
-		//this.dynamicItems = new DynamicItems();
+		this.dynamicItems = new DynamicItems();
 
 	}
 })();
