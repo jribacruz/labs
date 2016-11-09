@@ -7,16 +7,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import foo.domain.Foo;
+import foo.model.FooModel;
 
 @RestController
 public class IndexRS {
 
 	@RequestMapping("/foos")
-	public List<Foo> getNames() {
+	public FooModel getNames() {
+		FooModel fooModel = new FooModel();
 		List<Foo> foos = new ArrayList<>();
 		for (int i = 0; i < 10; i++) {
 			foos.add(new Foo(new Long(i), "foo" + i));
 		}
-		return foos;
+		fooModel.setFoos(foos);
+		fooModel.setTotal(10);
+		return fooModel;
 	}
 }

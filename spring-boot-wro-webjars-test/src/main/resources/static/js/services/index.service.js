@@ -17,7 +17,14 @@
 	function IndexSV($log, $resource) {
 		$log.debug('[IndexSV] Inicializando... ');
 
-		var api = {}
+		var api = {
+			query : {
+				method : 'GET',
+				url : '/foos/:id',
+				isArray : false
+			}
+
+		}
 
 		var resource = $resource('http://localhost:8080/foos/:id', {
 			id : '@id'
