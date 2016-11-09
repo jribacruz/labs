@@ -21,7 +21,11 @@
 			query : {
 				method : 'GET',
 				url : '/foos/:id',
-				isArray : false
+				isArray : false,
+				params : {
+					first : '@first',
+					pageSize : '@pagesize'
+				}
 			}
 
 		}

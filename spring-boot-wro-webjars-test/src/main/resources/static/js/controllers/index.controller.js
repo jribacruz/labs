@@ -19,7 +19,7 @@
 		$log.debug('[IndexCT] Inicializando Controller...');
 		var self = this;
 
-		self.fooModel = IndexSV.resource.query();
+		//self.fooModel = IndexSV.resource.query();
 
 		var DynamicItems = function() {
 			/**
@@ -61,13 +61,17 @@
 			// For demo purposes, we simulate loading more items with a timed
 			// promise. In real code, this function would likely contain an
 			// $http request.
-			$timeout(angular.noop, 300).then(angular.bind(this, function() {
+			
+			/*$timeout(angular.noop, 300).then(angular.bind(this, function() {
 				this.loadedPages[pageNumber] = [];
 				var pageOffset = pageNumber * this.PAGE_SIZE;
 				for (var i = pageOffset; i < pageOffset + this.PAGE_SIZE; i++) {
 					this.loadedPages[pageNumber].push(i);
 				}
 			}));
+			*/
+			
+			
 		};
 
 		DynamicItems.prototype.fetchNumItems_ = function() {

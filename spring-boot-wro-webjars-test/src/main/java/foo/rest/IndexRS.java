@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import foo.domain.Foo;
@@ -13,7 +14,9 @@ import foo.model.FooModel;
 public class IndexRS {
 
 	@RequestMapping("/foos")
-	public FooModel getNames() {
+	public FooModel getNames(@RequestParam(name = "first") Integer first, @RequestParam(name = "pagesize") Integer pageSize) {
+		System.out.println("First: " + first);
+		System.out.println("PageSize: " + pageSize);
 		FooModel fooModel = new FooModel();
 		List<Foo> foos = new ArrayList<>();
 		for (int i = 0; i < 100; i++) {
