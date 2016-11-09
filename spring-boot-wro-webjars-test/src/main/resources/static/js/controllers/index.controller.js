@@ -21,5 +21,7 @@
 		
 		self.foos = IndexSV.resource.query();
 		
+		
+		
 	}
 })();

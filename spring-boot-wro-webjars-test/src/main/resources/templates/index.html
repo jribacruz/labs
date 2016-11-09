@@ -10,9 +10,24 @@
 </head>
 <body ng-app="springMVCMD">
 	<div ng-controller="IndexCT as indexCT">
-		<div ng-repeat="foo in indexCT.foos">
-			<p>Foos server: {{foo.name}}</p>
-		</div>
+		<section layout="row" flex>
+			 <md-sidenav class="md-sidenav-left"
+		        md-component-id="left"
+		        md-is-locked-open="$mdMedia('gt-md')"
+		        md-whiteframe="4">
+		        
+		        <md-toolbar class="md-theme-indigo">
+		        	<h1 class="md-toolbar-tools">Sidenav Left</h1>
+		        </md-toolbar>
+				
+				<md-virtual-repeat-container>
+					<div md-virtual-repeat="foo in ctrl.foos" md-on-demand class="repeated-item" flex>
+				        {{foo.name}}
+				    </div>			
+				</md-virtual-repeat-container>		        
+								
+		     </md-sidenav>
+		</section>
 	</div>
 	<md-button class="md-primary">Hello</md-button>
     <script src="/wro/global.js"></script>

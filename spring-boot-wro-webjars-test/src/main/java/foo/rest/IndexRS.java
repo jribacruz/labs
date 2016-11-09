@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import foo.model.Foo;
+import foo.domain.Foo;
 
 @RestController
 public class IndexRS {
