@@ -8,7 +8,15 @@ public class FooModel {
 
 	private List<Foo> foos;
 
-	private int total;
+	private int total = 100;
+
+	public FooModel(List<Foo> foosParams) {
+		this.foos = foosParams;
+	}
+
+	public FooModel() {
+		super();
+	}
 
 	public List<Foo> getFoos() {
 		return foos;

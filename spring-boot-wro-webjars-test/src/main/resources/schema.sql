@@ -1,0 +1,1 @@
+create table foo(id integer, name varchar(100));
