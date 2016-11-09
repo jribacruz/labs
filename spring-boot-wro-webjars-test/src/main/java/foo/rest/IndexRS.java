@@ -16,7 +16,7 @@ public class IndexRS {
 	public FooModel getNames() {
 		FooModel fooModel = new FooModel();
 		List<Foo> foos = new ArrayList<>();
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 100; i++) {
 			foos.add(new Foo(new Long(i), "foo" + i));
 		}
 		fooModel.setFoos(foos);
