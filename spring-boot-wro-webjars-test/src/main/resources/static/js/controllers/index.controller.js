@@ -20,6 +20,8 @@
 		var self = this;
 
 		//self.fooModel = IndexSV.resource.query();
+		
+		self.fooModel = {};
 
 		var DynamicItems = function() {
 			/**
@@ -57,7 +59,7 @@
 		DynamicItems.prototype.fetchPage_ = function(pageNumber) {
 			// Set the page to null so we know it is already being fetched.
 			this.loadedPages[pageNumber] = null;
-
+			
 			// For demo purposes, we simulate loading more items with a timed
 			// promise. In real code, this function would likely contain an
 			// $http request.
@@ -70,7 +72,12 @@
 				}
 			}));
 			*/
-			
+			self.fooModel = IndexSV.resource.query({
+				first: pageNumber * this.PAGE_SIZE,
+				pagesize: this.PAGE_SIZE
+			},angular.bind(this,function() {
+				this.loadedPages[pageNumber] = self.fooModel.foos;				
+			}));
 			
 		};
 
@@ -80,7 +87,7 @@
 			// promise. In real code, this function would likely contain an
 			// $http request.
 			$timeout(angular.noop, 300).then(angular.bind(this, function() {
-				this.numItems = 50000;
+				this.numItems = 432;
 			}));
 		};
 
