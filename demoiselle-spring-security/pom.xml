@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://maven.apache.org/POM/4.0.0"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
@@ -27,8 +28,7 @@
 			<scope>compile</scope>
 		</dependency>
 		<!-- If you are using a JTA transaction then use this extension -->
-		<!-- <dependency> <groupId>br.gov.frameworkdemoiselle</groupId> <artifactId>demoiselle-jta</artifactId> 
-			<scope>compile</scope> </dependency> -->
+		<!-- <dependency> <groupId>br.gov.frameworkdemoiselle</groupId> <artifactId>demoiselle-jta</artifactId> <scope>compile</scope> </dependency> -->
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
@@ -49,6 +49,11 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-web</artifactId>
+			<version>4.2.0.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
 			<version>4.2.0.RELEASE</version>
 		</dependency>
 	</dependencies>
