@@ -4,8 +4,9 @@
 
 	<ui:define name="body">
 		<p:panel>
-			#{messages['main.app.welcome']}
+			ADMIN - #{messages['main.app.welcome']}
 		</p:panel>
+		<h:outputLink value="#{facesContext.externalContext.requestContextPath}/logout">Sair</h:outputLink>
 	</ui:define>
 
 </ui:composition>

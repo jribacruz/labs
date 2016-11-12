@@ -13,7 +13,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		// @formatter:off
 		auth.
 			inMemoryAuthentication()
-				.withUser("user").password("12345").roles("USER");
+					.withUser("user").password("12345").roles("USER")
+				.and()
+					.withUser("mngt").password("12345").roles("MNGT");
 		// @formatter:on
 	}
 
@@ -25,6 +27,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.csrf().disable();
 		http
 			.authorizeRequests()
+			.antMatchers("/user/**").hasRole("USER")
+			.antMatchers("/mngt/**").hasRole("MNGT")
 			.anyRequest().authenticated()
 			.and()
 				.logout().logoutSuccessUrl("/login.jsf?logout")
@@ -33,7 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.formLogin()
 				.loginPage("/login.jsf")
 				.permitAll()
-				.defaultSuccessUrl("/index.jsf", true);
+				.successHandler(new DefaultAuthenticationSuccessHandler());
 		// @formatter:on
 
 	}
