@@ -1,6 +1,7 @@
 package foo.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -37,9 +38,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.logout()
 			.and()
 				.formLogin()
-				.successHandler(new DefaultAuthenticationSuccessHandler());
+			.and()
+				.addFilterBefore(createJwtTokenAuthentication(), JwtTokenAuthentication.class);
 		// @formatter:on
 
+	}
+
+	@Bean
+	public JwtTokenAuthentication createJwtTokenAuthentication() throws Exception {
+		JwtTokenAuthentication authentication = new JwtTokenAuthentication("/login");
+		authentication.setAuthenticationManager(this.authenticationManager());
+		return authentication;
 	}
 
 }
