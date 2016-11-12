@@ -3,7 +3,11 @@ package foo.view;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.inject.Inject;
+
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 
 import br.gov.frameworkdemoiselle.annotation.NextView;
 import br.gov.frameworkdemoiselle.annotation.PreviousView;
@@ -23,6 +27,13 @@ public class BookmarkListMB extends AbstractListPageBean<Bookmark, Long> {
 
 	@Inject
 	private BookmarkBC bc;
+
+	@PostConstruct
+	public void init() {
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		System.out.println(user.getUsername());
+		System.out.println(user.getAuthorities());
+	}
 
 	@Override
 	protected List<Bookmark> handleResultList() {
