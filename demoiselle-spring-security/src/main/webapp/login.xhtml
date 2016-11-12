@@ -1,0 +1,25 @@
+<html xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<f:view contentType="text/html" locale="#{locales.currentLocale}" />
+
+<h:head>
+	<title>#{messages['main.app.title']}</title>
+</h:head>
+
+<h:body style="background-color:#f1f1f1">
+	<h:form id="form" prependId="false">
+		<h2>Seja bem vindo. Entre com os dados abaixo para realizar o
+			login.</h2>
+		<h:panelGrid columns="2">
+			<h:outputLabel for="username" value="Usuário" />
+			<h:inputText id="username" name="username" />
+			<h:outputLabel for="password" value="Senha" />
+			<h:inputSecret id="password" name="password" />
+		</h:panelGrid>
+		<h:commandButton value="Enviar" action="login" />
+	</h:form>
+</h:body>
+</html>
