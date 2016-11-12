@@ -1,25 +1,27 @@
 package foo.security;
 
-import org.springframework.context.annotation.Bean;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Bean
-	public UserDetailsService userDetailsService() {
-		InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-		manager.createUser(User.withUsername("user").password("password").roles("USER").build());
-		return manager;
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		// @formatter:off
+		auth.
+			inMemoryAuthentication()
+				.withUser("user").password("12345").roles("USER");
+		// @formatter:on
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		//@// @formatter:off
+ 
+
 		http.csrf().disable();
 		http
 			.authorizeRequests()
@@ -32,8 +34,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.loginPage("/login.jsf")
 				.permitAll()
 				.defaultSuccessUrl("/index.jsf", true);
-			
+		// @formatter:on
+
 	}
-	
-	
+
 }
