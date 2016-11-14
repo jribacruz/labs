@@ -24,17 +24,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		//@// @formatter:off
 		http
 			.csrf().disable()
-			.authorizeRequests()
-			.antMatchers("/user/**").hasRole("USER")
-			.antMatchers("/mngt/**").hasRole("MNGT")
-			.anyRequest().authenticated()
+				.authorizeRequests()
+					.antMatchers("/mngt/**").hasRole("MNGT")
+					.antMatchers("/user/**").hasRole("USER")
+					.anyRequest().authenticated()
 			.and()
-				.logout().logoutSuccessUrl("/login.jsf?logout")
-				.permitAll()
+				.logout().logoutSuccessUrl("/login.jsf?logout").permitAll()
 			.and()
-				.formLogin()
-				.loginPage("/login.jsf")
-				.permitAll()
+				.formLogin().loginPage("/login.jsf").permitAll()
 				.successHandler(new DefaultAuthenticationSuccessHandler());
 		// @formatter:on
 

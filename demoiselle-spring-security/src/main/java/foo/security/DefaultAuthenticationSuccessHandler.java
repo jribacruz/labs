@@ -47,6 +47,7 @@ public class DefaultAuthenticationSuccessHandler implements AuthenticationSucces
 		} else {
 			throw new IllegalStateException();
 		}
+	
 	}
 
 }
