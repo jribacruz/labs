@@ -2,8 +2,10 @@ package foo.security;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -13,7 +15,7 @@ import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
-public class DefaultAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
+public class PageRedirectAuthSuccessHandler implements AuthenticationSuccessHandler {
 
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest req, HttpServletResponse res, Authentication auth)
@@ -24,7 +26,7 @@ public class DefaultAuthenticationSuccessHandler implements AuthenticationSucces
 		}
 
 		System.out.println(auth.getAuthorities());
-		
+
 		Collection<? extends GrantedAuthority> authorities = auth.getAuthorities();
 		boolean isUser = false;
 		boolean isAdmin = false;
@@ -38,6 +40,16 @@ public class DefaultAuthenticationSuccessHandler implements AuthenticationSucces
 			}
 		}
 
+		System.out.println("Gerando Cookie do Jsec");
+
+		Cookie cookie = new Cookie("jsec", UUID.randomUUID().toString());
+		cookie.setSecure(false);
+		cookie.setHttpOnly(true);
+		cookie.setMaxAge(-1);
+		cookie.setDomain("localhost");
+		cookie.setPath("/demoiselle-spring-security-0.0.1-SNAPSHOT");
+		res.addCookie(cookie);
+
 		RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
 		if (isUser) {
@@ -47,7 +59,7 @@ public class DefaultAuthenticationSuccessHandler implements AuthenticationSucces
 		} else {
 			throw new IllegalStateException();
 		}
-	
+
 	}
 
 }

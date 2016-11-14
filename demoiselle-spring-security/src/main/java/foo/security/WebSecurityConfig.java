@@ -30,9 +30,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 					.anyRequest().authenticated()
 			.and()
 				.logout().logoutSuccessUrl("/login.jsf?logout").permitAll()
+				.deleteCookies("jsec")
 			.and()
 				.formLogin().loginPage("/login.jsf").permitAll()
-				.successHandler(new DefaultAuthenticationSuccessHandler());
+				.successHandler(new PageRedirectAuthSuccessHandler());
 		// @formatter:on
 
 	}
