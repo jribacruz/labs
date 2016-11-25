@@ -13,13 +13,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		// @formatter:off
-		auth.
-			inMemoryAuthentication()
-					.withUser("user").password("12345").roles("USER")
-				.and()
-					.withUser("mngt").password("12345").roles("MNGT");
+		//auth.
+		//	inMemoryAuthentication()
+		//			.withUser("user").password("12345").roles("USER")
+		//		.and()
+		//			.withUser("mngt").password("12345").roles("MNGT");
+		auth.authenticationProvider(new JsecAuthenticationProvider());
 		// @formatter:on
 	}
+
+	/*
+	 * @Bean public AuthenticationProvider getJsecAuthenticationProvider() {
+	 * return new JsecAuthenticationProvider(); }
+	 */
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
