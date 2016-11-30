@@ -4,8 +4,8 @@
 
 	<group name="app">
 		<js minimize="true">/js/app.module.js</js>
-		<js minimize="true">/js/services/index.service.js</js>
-		<js minimize="true">/js/controllers/index.controller.js</js>
+		<js minimize="true">/js/services/*.js</js>
+		<js minimize="true">/js/controllers/*.js</js>
 	</group>
 
 	<group name="global">

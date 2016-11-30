@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-	xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
@@ -41,18 +39,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.webjars/angularjs -->
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>angularjs</artifactId>
-			<version>1.5.8</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.webjars/angular-material -->
-		<dependency>
-			<groupId>org.webjars</groupId>
-			<artifactId>angular-material</artifactId>
-			<version>1.1.1</version>
-		</dependency>
 		<!-- wro4j -->
 		<dependency>
 			<groupId>ro.isdc.wro4j</groupId>
@@ -76,10 +62,76 @@
 	</dependencies>
 
 	<build>
+		<resources>
+			<resource>
+				<directory>${project.basedir}/src/main/resources</directory>
+			</resource>
+			<resource>
+				<directory>${project.build.directory}/generated-resources</directory>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<executions>
+					<execution>
+						<!-- Serves *only* to filter the wro.xml so it can get an absolute 
+							path for the project -->
+						<id>copy-resources</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/target/wro</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/resources</directory>
+									<filtering>true</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>ro.isdc.wro4j</groupId>
+				<artifactId>wro4j-maven-plugin</artifactId>
+				<version>1.7.8</version>
+				<executions>
+					<execution>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<wroManagerFactory>ro.isdc.wro.maven.plugin.manager.factory.ConfigurableWroManagerFactory</wroManagerFactory>
+					<cssDestinationFolder>${project.build.directory}/classes/static/css</cssDestinationFolder>
+					<jsDestinationFolder>${project.build.directory}/classes/static/js</jsDestinationFolder>
+					<wroFile>${basedir}/src/main/resources/wro.xml</wroFile>
+					<extraConfigFile>${basedir}/src/main/resources/wro.properties</extraConfigFile>
+					<contextFolder>${basedir}/src/main/resources/static</contextFolder>
+				</configuration>
+				<dependencies>
+					<!-- https://mvnrepository.com/artifact/org.webjars/angularjs -->
+					<dependency>
+						<groupId>org.webjars</groupId>
+						<artifactId>angularjs</artifactId>
+						<version>1.5.8</version>
+					</dependency>
+					<!-- https://mvnrepository.com/artifact/org.webjars/angular-material -->
+					<dependency>
+						<groupId>org.webjars</groupId>
+						<artifactId>angular-material</artifactId>
+						<version>1.1.1</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 		</plugins>
 	</build>
