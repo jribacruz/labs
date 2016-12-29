@@ -4,10 +4,14 @@
 		<title>CodeMirror Editor Test</title>
 		<link rel="stylesheet" href="webjars/codemirror/5.13.2/lib/codemirror.css">
 		<link rel="stylesheet" href="webjars/codemirror/5.13.2/theme/eclipse.css">
+		<link rel="stylesheet" href="webjars/codemirror/5.13.2/addon/lint/lint.css">
 		<script src="webjars/codemirror/5.13.2/lib/codemirror.js"></script>
 		<script src="webjars/codemirror/5.13.2/mode/javascript/javascript.js"></script>
 		<script src="webjars/codemirror/5.13.2/addon/runmode/runmode.js"></script>
+		<script src="webjars/codemirror/5.13.2/addon/lint/lint.js"></script>
+		<script src="webjars/codemirror/5.13.2/addon/lint/javascript-lint.js"></script>
 		<script src="webjars/codemirror/5.13.2/addon/runmode/colorize.js"></script>
+		<script src="webjars/codemirror/5.13.2/addon/edit/closebrackets.js"></script>
     </head>
 	<body id="orion-browser" spellcheck="false" class="orionPage">
 		<div class="code" id="embeddedEditor" style="width: 400px; height: 400px; border: 1px solid #aaa">
@@ -16,7 +20,10 @@
 			var myCodeMirror = CodeMirror(document.getElementById('embeddedEditor'),{
 				  value: "function myScript(){return 100;}\n",
 				  mode:  "javascript",
-				  lineNumbers: true
+				  lineNumbers: true,
+				  gutters: ["CodeMirror-lint-markers"],
+				  lint: true,
+				  autoCloseBrackets: true
 				});
 		</script>
 	</body>
