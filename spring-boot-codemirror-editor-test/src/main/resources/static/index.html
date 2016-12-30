@@ -2,25 +2,41 @@
 <html>
     <head>
 		<title>CodeMirror Editor Test</title>
-		<link rel="stylesheet" href="webjars/codemirror/5.13.2/lib/codemirror.css">
-		<link rel="stylesheet" href="webjars/codemirror/5.13.2/theme/eclipse.css">
-		<link rel="stylesheet" href="webjars/codemirror/5.13.2/addon/lint/lint.css">
+		
+		<!-- CORE -->
 		<script src="webjars/codemirror/5.13.2/lib/codemirror.js"></script>
+		<link rel="stylesheet" href="webjars/codemirror/5.13.2/lib/codemirror.css">
 		<script src="webjars/codemirror/5.13.2/mode/javascript/javascript.js"></script>
+
+
+		<link rel="stylesheet" href="webjars/codemirror/5.13.2/theme/eclipse.css">
+
 		<script src="webjars/codemirror/5.13.2/mode/css/css.js"></script>
 		<script src="webjars/codemirror/5.13.2/mode/xml/xml.js"></script>
 		<script src="webjars/codemirror/5.13.2/mode/htmlmixed/htmlmixed.js"></script>
 		<script src="webjars/codemirror/5.13.2/addon/runmode/runmode.js"></script>
-		<script src="webjars/codemirror/5.13.2/addon/lint/lint.js"></script>
-		<script src="webjars/codemirror/5.13.2/addon/lint/javascript-lint.js"></script>
+		
 		<script src="webjars/codemirror/5.13.2/addon/runmode/colorize.js"></script>
 		<script src="webjars/codemirror/5.13.2/addon/mode/multiplex.js"></script>
 		
+		<!-- LINT -->
+		<link rel="stylesheet" href="webjars/codemirror/5.13.2/addon/lint/lint.css">
+		<script src="webjars/codemirror/5.13.2/addon/lint/lint.js"></script>
+		<script src="webjars/codemirror/5.13.2/addon/lint/javascript-lint.js"></script>
+		
+		<!-- HINT -->
+		<link rel="stylesheet" href="webjars/codemirror/5.13.2/addon/hint/show-hint.css">
+		<script src="webjars/codemirror/5.13.2/addon/hint/show-hint.js"></script>
+		<script src="webjars/codemirror/5.13.2/addon/hint/javascript-hint.js"></script>
+		
+		<!-- BRACKETS -->
 		<script src="webjars/codemirror/5.13.2/addon/edit/matchbrackets.js"></script>
-		<!-- closebrackets -->
 		<script src="webjars/codemirror/5.13.2/addon/edit/closebrackets.js"></script>
 		
+		<!-- TAGS -->
 		<script src="webjars/codemirror/5.13.2/addon/edit/closetag.js"></script>
+		
+		<!-- FULLSCRENN -->
     </head>
 	<body id="orion-browser" spellcheck="false" class="orionPage">
 		<div class="code" id="embeddedEditor" style="border: 1px solid #aaa">
@@ -35,7 +51,9 @@
 				  gutters: ["CodeMirror-lint-markers"],
 				  lint: true,
 				  autoCloseBrackets: true,
-				  matchBrackets: true
+				  extraKeys: {"Ctrl-Space": "autocomplete"},
+				  matchBrackets: true,
+				  theme: 'eclipse'
 				});
 			var myCodeMirror2 = CodeMirror(document.getElementById('embeddedEditor2'),{
 				  mode:  "htmlmixed",
