@@ -15,6 +15,9 @@
 		<script src="webjars/codemirror/5.13.2/addon/lint/javascript-lint.js"></script>
 		<script src="webjars/codemirror/5.13.2/addon/runmode/colorize.js"></script>
 		<script src="webjars/codemirror/5.13.2/addon/mode/multiplex.js"></script>
+		
+		<script src="webjars/codemirror/5.13.2/addon/edit/matchbrackets.js"></script>
+		<!-- closebrackets -->
 		<script src="webjars/codemirror/5.13.2/addon/edit/closebrackets.js"></script>
     </head>
 	<body id="orion-browser" spellcheck="false" class="orionPage">
@@ -29,7 +32,8 @@
 				  lineNumbers: true,
 				  gutters: ["CodeMirror-lint-markers"],
 				  lint: true,
-				  autoCloseBrackets: true
+				  autoCloseBrackets: true,
+				  matchBrackets: true
 				});
 			var myCodeMirror2 = CodeMirror(document.getElementById('embeddedEditor2'),{
 				  mode:  "htmlmixed",
