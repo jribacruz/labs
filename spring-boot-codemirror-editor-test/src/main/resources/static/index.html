@@ -23,6 +23,7 @@
 		<link rel="stylesheet" href="webjars/codemirror/5.13.2/addon/lint/lint.css">
 		<script src="webjars/codemirror/5.13.2/addon/lint/lint.js"></script>
 		<script src="webjars/codemirror/5.13.2/addon/lint/javascript-lint.js"></script>
+		<script src="webjars/jshint/2.9.3/jshint.js"></script>
 		
 		<!-- HINT -->
 		<link rel="stylesheet" href="webjars/codemirror/5.13.2/addon/hint/show-hint.css">
@@ -36,7 +37,9 @@
 		<!-- TAGS -->
 		<script src="webjars/codemirror/5.13.2/addon/edit/closetag.js"></script>
 		
-		<!-- FULLSCRENN -->
+		<!-- COMMENTS -->
+		<script src="webjars/codemirror/5.13.2/addon/comment/comment.js"></script>
+		<script src="webjars/codemirror/5.13.2/addon/comment/continuecomment.js"></script>
     </head>
 	<body id="orion-browser" spellcheck="false" class="orionPage">
 		<div class="code" id="embeddedEditor" style="border: 1px solid #aaa">
@@ -45,7 +48,7 @@
 		</div>
 		<script type="text/javascript">
 			var myCodeMirror1 = CodeMirror(document.getElementById('embeddedEditor'),{
-				  value: "function myScript(){return 100;}\n",
+				  value: "function myScript(){\n\treturn 100;\n}\n",
 				  mode:  "javascript",
 				  lineNumbers: true,
 				  gutters: ["CodeMirror-lint-markers"],
@@ -53,7 +56,8 @@
 				  autoCloseBrackets: true,
 				  extraKeys: {"Ctrl-Space": "autocomplete"},
 				  matchBrackets: true,
-				  theme: 'eclipse'
+				  theme: 'eclipse',
+				  indentUnit: 4
 				});
 			var myCodeMirror2 = CodeMirror(document.getElementById('embeddedEditor2'),{
 				  mode:  "htmlmixed",
