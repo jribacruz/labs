@@ -19,6 +19,8 @@
 		<script src="webjars/codemirror/5.13.2/addon/edit/matchbrackets.js"></script>
 		<!-- closebrackets -->
 		<script src="webjars/codemirror/5.13.2/addon/edit/closebrackets.js"></script>
+		
+		<script src="webjars/codemirror/5.13.2/addon/edit/closetag.js"></script>
     </head>
 	<body id="orion-browser" spellcheck="false" class="orionPage">
 		<div class="code" id="embeddedEditor" style="border: 1px solid #aaa">
@@ -37,7 +39,8 @@
 				});
 			var myCodeMirror2 = CodeMirror(document.getElementById('embeddedEditor2'),{
 				  mode:  "htmlmixed",
-				  lineNumbers: true
+				  lineNumbers: true,
+				  autoCloseTags: true
 				});
 		</script>
 	</body>
