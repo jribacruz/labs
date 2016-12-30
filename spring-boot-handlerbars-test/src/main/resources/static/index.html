@@ -10,10 +10,9 @@
 <body id="orion-browser" spellcheck="false" class="orionPage">
 	<script id="entry-template" type="text/x-handlebars-template">
  			 <div class="entry">
-    			<h1>{{title}}</h1>
-   				 <div class="body">
-    			 	 {{body}}
-   				 </div>
+    			{{#each entity.attributes as |attr|}}
+    			 	 {{attr.name}}:{{attr.type}}
+				{{/each}}
   			</div>
 		</script>
 	<script type="text/javascript">
@@ -22,38 +21,168 @@
 		var template = Handlebars.compile(source);
 		var context = {
 			entity : {
-				 "@type": "EClass",
+			      "@type": "EClass",
 			      "sourceFolder": "/src/main/java/",
-			      "path": "/home/jcruz/workspace/aelismaps/src/main/java/br/jus/tre_pa/aelismap/AelismapsApplication.java",
-			      "name": "AelismapsApplication",
-			      "fullyQualifiedName": "br.jus.tre_pa.aelismap.AelismapsApplication",
+			      "path": "/home/jcruz/workspace-neon/aelis2016/src/main/java/br/jus/tre_pa/aelis/atividades/business/AtividadeBC.java",
+			      "name": "AtividadeBC",
+			      "fullyQualifiedName": "br.jus.tre_pa.aelis.atividades.business.AtividadeBC",
 			      "classPackage": {
-			        "name": "br.jus.tre_pa.aelismap",
-			        "directory": "br/jus/tre_pa/aelismap"
+			        "name": "br.jus.tre_pa.aelis.atividades.business",
+			        "directory": "br/jus/tre_pa/aelis/atividades/business"
 			      },
-			      "attributes": [],
+			      "attributes": [
+			        {
+			          "@type": "EAttribute",
+			          "name": "unidadeBc",
+			          "type": "br.jus.tre_pa.aelis.core.business.UnidadeBC",
+			          "modifiers": [
+			            "private"
+			          ],
+			          "genericTypes": {},
+			          "annotations": [
+			            {
+			              "name": "javax.inject.Inject",
+			              "parameters": {}
+			            }
+			          ]
+			        },
+			        {
+			          "@type": "EAttribute",
+			          "name": "serialVersionUID",
+			          "type": "long",
+			          "modifiers": [
+			            "private",
+			            "static",
+			            "final"
+			          ],
+			          "genericTypes": {},
+			          "annotations": []
+			        },
+			        {
+			          "@type": "EAttribute",
+			          "name": "unidadeContext",
+			          "type": "br.jus.tre_pa.aelis.atividades.view.AtividadeContext",
+			          "modifiers": [
+			            "private"
+			          ],
+			          "genericTypes": {},
+			          "annotations": [
+			            {
+			              "name": "javax.inject.Inject",
+			              "parameters": {}
+			            }
+			          ]
+			        },
+			        {
+			          "@type": "EAttribute",
+			          "name": "log",
+			          "type": "org.slf4j.Logger",
+			          "modifiers": [
+			            "private"
+			          ],
+			          "genericTypes": {},
+			          "annotations": [
+			            {
+			              "name": "javax.inject.Inject",
+			              "parameters": {}
+			            }
+			          ]
+			        },
+			        {
+			          "@type": "EAttribute",
+			          "name": "userInfo",
+			          "type": "br.jus.tre_pa.jsec.core.context.JsecUserInfo",
+			          "modifiers": [
+			            "private"
+			          ],
+			          "genericTypes": {},
+			          "annotations": [
+			            {
+			              "name": "javax.inject.Inject",
+			              "parameters": {}
+			            }
+			          ]
+			        }
+			      ],
 			      "methods": [
 			        {
 			          "@type": "EMethod",
-			          "name": "main",
-			          "body": "public static void main(java.lang.String[] args) {\n\n\t\tSpringApplication.run(AelismapsApplication.class, args);\n\t}\n",
+			          "name": "insert",
+			          "body": "public br.jus.tre_pa.aelis.atividades.domain.Atividade insert(br.jus.tre_pa.aelis.atividades.domain.Atividade bean) {\n\n\t\tUnidade unidade = new Unidade();\n\t\tunidade.setId(209L);\n\n\t\t// ================>>>>>>>> TODO apenas para testes, remover depois\n\t\tif (userInfo.getLotacaoSigla() != null && !userInfo.getLotacaoSigla().isEmpty()) {\n\t\t\tunidade = unidadeBc.findBySigla(userInfo.getLotacaoSigla());\n\t\t}\n\t\t// <<<<<<<<<<=============== TODO apenas para testes, remover depois\n\t\tbean.setUnidade(unidade);\n\t\treturn getDelegate().insert(bean);\n\t}\n",
 			          "parameters": {
 			            "0": {
-			              "name": "args",
-			              "type": "java.lang.String",
+			              "name": "bean",
+			              "type": "br.jus.tre_pa.aelis.atividades.domain.Atividade",
 			              "annotations": []
 			            }
 			          },
+			          "annotations": [
+			            {
+			              "name": "br.gov.frameworkdemoiselle.transaction.Transactional",
+			              "parameters": {}
+			            },
+			            {
+			              "name": "java.lang.Override",
+			              "parameters": {}
+			            }
+			          ]
+			        },
+			        {
+			          "@type": "EMethod",
+			          "name": "findAll",
+			          "body": "/**\n * retorna a lista de tipo de pontos\n */\npublic java.util.List findAll() {\n\n\t\tlog.debug(\"==>[findAll] Buscando todas as atividades\");\n\t\tList<Atividade> retorno = getDelegate().findAll();\n\t\tlog.debug(\"<==[findAll] Total de atividades encontradas: {}\", retorno.size());\n\t\treturn retorno;\n\t}\n",
+			          "parameters": {},
+			          "annotations": [
+			            {
+			              "name": "java.lang.Deprecated",
+			              "parameters": {}
+			            }
+			          ]
+			        },
+			        {
+			          "@type": "EMethod",
+			          "name": "findAllByTurno",
+			          "body": "public java.util.List findAllByTurno() {\n\n\t\tlog.debug(\"==>[findAll] Buscando todas as atividades\");\n\n\t\tUnidade unidade = new Unidade();\n\t\tunidade.setId(209L);\n\t\t// ================>>>>>>>> TODO apenas para testes, remover depois\n\t\tif (userInfo.getLotacaoSigla() != null && !userInfo.getLotacaoSigla().isEmpty()) {\n\t\t\tunidade = unidadeBc.findBySigla(userInfo.getLotacaoSigla());\n\t\t}\n\t\t// <<<<<<<<<<=============== TODO apenas para testes, remover depois\n\t\tList<Atividade> retorno = getDelegate().findAllByTurno(unidadeContext.getTurno(), unidade);\n\t\tlog.debug(\"<==[findAll] Total de atividades encontradas: {}\", retorno.size());\n\t\treturn retorno;\n\t}\n",
+			          "parameters": {},
+			          "annotations": []
+			        },
+			        {
+			          "@type": "EMethod",
+			          "name": "update",
+			          "body": "public br.jus.tre_pa.aelis.atividades.domain.Atividade update(br.jus.tre_pa.aelis.atividades.domain.Atividade bean) {\n\n\t\treturn getDelegate().update(bean);\n\t}\n",
+			          "parameters": {
+			            "0": {
+			              "name": "bean",
+			              "type": "br.jus.tre_pa.aelis.atividades.domain.Atividade",
+			              "annotations": []
+			            }
+			          },
+			          "annotations": [
+			            {
+			              "name": "br.gov.frameworkdemoiselle.transaction.Transactional",
+			              "parameters": {}
+			            },
+			            {
+			              "name": "java.lang.Override",
+			              "parameters": {}
+			            }
+			          ]
+			        },
+			        {
+			          "@type": "EMethod",
+			          "name": "findAllByName",
+			          "body": "/**\n * retorna a lista de tipo de pontos\n */\npublic java.util.List findAllByName() {\n\n\t\tlog.debug(\"==>[findAll] Buscando todos os nomes de atividade...\");\n\t\tList<String> retorno = getDelegate().findAllByName();\n\t\tlog.debug(\"<==[findAll] Total de nomes de atividade encontrados: {}\", retorno.size());\n\t\treturn retorno;\n\t}\n",
+			          "parameters": {},
 			          "annotations": []
 			        }
 			      ],
 			      "annotations": [
 			        {
-			          "name": "org.springframework.boot.autoconfigure.SpringBootApplication",
+			          "name": "br.gov.frameworkdemoiselle.stereotype.BusinessController",
 			          "parameters": {}
 			        }
 			      ]
-			}
+			    }
 
 		}
 		var html = template(context);
