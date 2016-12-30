@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+<title>CodeMirror Editor Test</title>
+<script src="webjars/handlebars/4.0.5/handlebars.min.js"></script>
+<!-- 
+		<script src="webjars/handlebars/4.0.5/handlebars.runtime.min.js"></script>
+		 -->
+</head>
+<body id="orion-browser" spellcheck="false" class="orionPage">
+	<script id="entry-template" type="text/x-handlebars-template">
+ 			 <div class="entry">
+    			<h1>{{title}}</h1>
+   				 <div class="body">
+    			 	 {{body}}
+   				 </div>
+  			</div>
+		</script>
+	<script type="text/javascript">
+		var source = document.getElementById("entry-template").innerHTML;
+		console.log(source);
+		var template = Handlebars.compile(source);
+		var context = {
+			entity : {
+				 "@type": "EClass",
+			      "sourceFolder": "/src/main/java/",
+			      "path": "/home/jcruz/workspace/aelismaps/src/main/java/br/jus/tre_pa/aelismap/AelismapsApplication.java",
+			      "name": "AelismapsApplication",
+			      "fullyQualifiedName": "br.jus.tre_pa.aelismap.AelismapsApplication",
+			      "classPackage": {
+			        "name": "br.jus.tre_pa.aelismap",
+			        "directory": "br/jus/tre_pa/aelismap"
+			      },
+			      "attributes": [],
+			      "methods": [
+			        {
+			          "@type": "EMethod",
+			          "name": "main",
+			          "body": "public static void main(java.lang.String[] args) {\n\n\t\tSpringApplication.run(AelismapsApplication.class, args);\n\t}\n",
+			          "parameters": {
+			            "0": {
+			              "name": "args",
+			              "type": "java.lang.String",
+			              "annotations": []
+			            }
+			          },
+			          "annotations": []
+			        }
+			      ],
+			      "annotations": [
+			        {
+			          "name": "org.springframework.boot.autoconfigure.SpringBootApplication",
+			          "parameters": {}
+			        }
+			      ]
+			}
+
+		}
+		var html = template(context);
+		console.log(html);
+	</script>
+</body>
+</html>
