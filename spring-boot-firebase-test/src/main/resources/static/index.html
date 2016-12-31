@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<title>Firebase DB Test</title>
+
+<script src="https://www.gstatic.com/firebasejs/3.6.4/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBial7JzV-TQ3rVtFju882bu7xihxZvwx4",
+    authDomain: "test1-769de.firebaseapp.com",
+    databaseURL: "https://test1-769de.firebaseio.com",
+    storageBucket: "test1-769de.appspot.com",
+    messagingSenderId: "991868920746"
+  };
+  var mainApp = firebase.initializeApp(config);
+</script>
+</head>
+<body id="orion-browser" spellcheck="false" class="orionPage">
+	<script type="text/javascript">
+		var actions = mainApp.database().ref("actions");
+		actions.on('value', function(snapshot) {
+			  //updateStarCount(postElement, snapshot.val());
+			  console.log(snapshot.val());
+		});
+	</script>
+</body>
+</html>

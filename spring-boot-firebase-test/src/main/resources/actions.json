@@ -1,0 +1,13 @@
+{
+	"actions": [{
+		"config": {
+			"name": "action-demo-1",
+			"description": "Ação de Demonstração 1"
+		},
+		"fnExecute": "var x = 'Hello'",
+		"templates": {
+			"name": "daoTemplate",
+			"content": "{{entity.name}}DAO"
+		}
+	}]
+}
