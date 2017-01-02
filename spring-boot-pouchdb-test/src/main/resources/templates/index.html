@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<title>PouchDB Test</title>
+<script src="//cdn.jsdelivr.net/pouchdb/6.1.0/pouchdb.min.js"></script>
+</head>
+<body id="orion-browser" spellcheck="false" class="orionPage">
+	<script type="text/javascript">
+	 	var db = new PouchDB('skdevdb');
+	 	var remotedb = new PouchDB('http://10.13.29.32:5984/skdevdb');
+	 	
+	 	db.sync('http://10.13.29.32:5984/skdevdb',{
+			live: true,
+			retry: false
+	 	}).on('complete', function() {
+	 		console.log('Sync complete.');
+	 	}).on('error', function(err) {
+	 		console.log('Sync error. '+err);
+	 	});
+	 	
+	 	function addTodo(text) {
+	 		  var todo = {
+	 		    _id: new Date().toISOString(),
+	 		    title: text,
+	 		    completed: false
+	 		  };
+	 		  db.put(todo, function callback(err, result) {
+	 		    if (!err) {
+	 		      console.log('Successfully posted a todo!');
+	 		    }
+	 		  });
+	 		};
+	 	function showTodos() {
+	 		  db.allDocs({include_docs: true, descending: true}, function(err, doc) {
+	 		    console.log(doc.rows);
+	 		  });
+	 		}
+	</script>
+	<a href="#" onclick="addTodo('skdev-1')">Add</a>
+	<a href="#" onclick="showTodos()">Show</a>
+</body>
+</html>
