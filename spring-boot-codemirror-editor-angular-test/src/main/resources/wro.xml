@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<groups xmlns="http://www.isdc.ro/wro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.isdc.ro/wro wro.xsd">
+
+	<group name="app">
+		<js minimize="true">/js/app.module.js</js>
+		<js minimize="true">/js/services/*.js</js>
+		<js minimize="true">/js/controllers/*.js</js>
+	</group>
+	
+	<group name="codemirror">
+		<css minimize="true">classpath:META-INF/resources/webjars/codemirror/5.13.2/lib/codemirror.css</css>
+		<css minimize="true">classpath:META-INF/resources/webjars/codemirror/5.13.2/theme/eclipse.css</css>
+		<css minimize="true">classpath:META-INF/resources/webjars/codemirror/5.13.2/addon/lint/lint.css</css>
+		<css minimize="true">classpath:META-INF/resources/webjars/codemirror/5.13.2/addon/hint/show-hint.css</css>
+		<css minimize="true">classpath:META-INF/resources/webjars/codemirror/5.13.2/lib/codemirror.css</css>
+		<css minimize="true">classpath:META-INF/resources/webjars/codemirror/5.13.2/lib/codemirror.css</css>
+		<css minimize="true">classpath:META-INF/resources/webjars/codemirror/5.13.2/lib/codemirror.css</css>
+		
+		<js minimize="true">classpath:META-INF/resources/webjars/codemirror/5.13.2/lib/codemirror.js</js>
+		<js minimize="true">classpath:META-INF/resources/webjars/codemirror/5.13.2/mode/javascript/javascript.js</js>
+		<js minimize="true">classpath:META-INF/resources/webjars/codemirror/5.13.2/mode/css/css.js</js>
+		<js minimize="true">classpath:META-INF/resources/webjars/codemirror/5.13.2/mode/xml/xml.js</js>
+		<js minimize="true">classpath:META-INF/resources/webjars/codemirror/5.13.2/mode/htmlmixed/htmlmixed.js</js>
+		<js minimize="true">classpath:META-INF/resources/webjars/codemirror/5.13.2/addon/runmode/runmode.js</js>
+		<js minimize="true">classpath:META-INF/resources/webjars/codemirror/5.13.2/addon/runmode/colorize.js</js>
+		<js minimize="true">classpath:META-INF/resources/webjars/codemirror/5.13.2/addon/mode/multiplex.js</js>
+		<js minimize="true">classpath:META-INF/resources/webjars/codemirror/5.13.2/addon/lint/lint.js</js>
+		<js minimize="true">classpath:META-INF/resources/webjars/codemirror/5.13.2/addon/lint/javascript-lint.js</js>
+		<js minimize="true">classpath:META-INF/resources/webjars/jshint/2.9.3/jshint.js</js>
+		<js minimize="true">classpath:META-INF/resources/webjars/codemirror/5.13.2/addon/hint/show-hint.js</js>
+		<js minimize="true">classpath:META-INF/resources/webjars/codemirror/5.13.2/addon/hint/javascript-hint.js</js>
+		<js minimize="true">classpath:META-INF/resources/webjars/codemirror/5.13.2/addon/edit/matchbrackets.js</js>
+		<js minimize="true">classpath:META-INF/resources/webjars/codemirror/5.13.2/addon/edit/closebrackets.js</js>
+		<js minimize="true">classpath:META-INF/resources/webjars/codemirror/5.13.2/addon/edit/closetag.js</js>
+		<js minimize="true">classpath:META-INF/resources/webjars/codemirror/5.13.2/addon/comment/comment.js</js>
+		<js minimize="true">classpath:META-INF/resources/webjars/codemirror/5.13.2/addon/comment/continuecomment.js</js>
+	</group>
+	
+
+	<group name="global">
+		<js minimize="false">classpath:META-INF/resources/webjars/angularjs/1.6.0/angular.min.js</js>
+		<js minimize="false">classpath:META-INF/resources/webjars/angularjs/1.6.0/angular-resource.min.js</js>
+		<js minimize="false">classpath:META-INF/resources/webjars/angularjs/1.6.0/angular-animate.min.js</js>
+		<js minimize="false">classpath:META-INF/resources/webjars/angularjs/1.6.0/angular-aria.min.js</js>
+		<css minimize="false">classpath:META-INF/resources/webjars/angular-material/1.1.1/angular-material.min.css</css>
+		<js minimize="false">classpath:META-INF/resources/webjars/angular-material/1.1.1/angular-material.min.js</js>
+		<js minimize="false">classpath:META-INF/resources/webjars/angular-material/1.1.1/angular-material.min.js</js>
+		<group-ref>app</group-ref>
+		<group-ref>codemirror</group-ref>
+	</group>
+</groups>

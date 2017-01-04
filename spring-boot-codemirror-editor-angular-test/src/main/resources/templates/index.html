@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+    <head>
+		<title>CodeMirror Editor Test</title>
+		<link href="/css/global.css" rel="stylesheet" type="text/css"/>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic"/>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>	
+    </head>
+	<body ng-app="editorMD">
+		<div ng-controller="ActionEditorCT as actionEditorCT">
+			<md-button class="md-primary" ng-click="actionEditorCT.execute()">Executar</md-button>
+			<div class="code" id="fnExecuteEditor" style="border: 1px solid #aaa">
+			</div>
+		</div>
+		
+		<!-- 
+		<div class="code" id="embeddedEditor2" style="border: 1px solid #aaa">
+		</div>
+		 -->
+		<script src="/js/global.js"></script>
+	</body>
+</html>
