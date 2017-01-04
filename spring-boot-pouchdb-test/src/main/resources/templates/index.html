@@ -17,7 +17,8 @@
 	 	}).on('error', function(err) {
 	 		console.log('Sync error. '+err);
 	 	}).on('change', function(info) {
-	 		console.log('Change: '+info);
+	 		console.log('Change: ');
+	 		console.log(info);
 	 	});
 	 	
 	 	function addTodo(text) {
