@@ -3,7 +3,7 @@
 
 	angular.module('editorMD').controller('ActionEditorCT', ActionEditorCT);
 
-	ActionEditorCT.$inject = [ '$scope', '$log' ];
+	ActionEditorCT.$inject = [ '$scope', '$log', 'notificationSV' ];
 
 	/**
 	 * 
@@ -15,7 +15,7 @@
 	 * @param HttpSV
 	 * @returns
 	 */
-	function ActionEditorCT($scope, $log) {
+	function ActionEditorCT($scope, $log, notificationSV) {
 		$log.debug('[ActionEditorCT] Inicializando...');
 		var self = this;
 
@@ -33,7 +33,7 @@
 
 		function init() {
 			editors['fnExecute'] = CodeMirror(document.getElementById('fnExecuteEditor'),{
-				  value: "function myScript(){\n\treturn 100;\n}\n",
+				  value: "$notification.show('Funcionou')",
 				  mode:  "javascript",
 				  lineNumbers: true,
 				  gutters: ["CodeMirror-lint-markers"],
@@ -48,8 +48,10 @@
 		
 		function execute() {
 			$log.debug('Executando fn.')
-			var fn = new Function('templates',editors['fnExecute'].getValue());
-			var afn = angular.bind(this, fn, templates);
+			//notificationSV.show('Teste Fora')
+			var $notification = notificationSV;
+			var fn = new Function('templates', '$notification',editors['fnExecute'].getValue());
+			var afn = angular.bind(this, fn, templates, $notification);
 			afn();
 		}
 	}
