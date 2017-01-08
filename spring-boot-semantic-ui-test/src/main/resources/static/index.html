@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+    <head>
+		<title>CodeMirror Editor Test</title>
+		
+		<!-- CORE -->
+		<script
+  		src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.6/semantic.min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.6/components/dropdown.min.css">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.6/components/menu.min.css">
+		<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.6/components/dropdown.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/semantic-ui/2.2.6/semantic.min.js"></script>
+    </head>
+	<body >
+		<button class="ui button" onclick="$('#dropdown').dropdown()">Follow</button>
+		<div id="dropdown" class="ui selection dropdown">
+		  <input type="hidden" name="gender">
+		  <i class="dropdown icon"></i>
+		  <div class="default text">Gender</div>
+		  <div class="menu">
+		    <div class="item" data-value="1">Male</div>
+		    <div class="item" data-value="0">Female</div>
+		  </div>
+		</div>
+	</body>
+</html>
