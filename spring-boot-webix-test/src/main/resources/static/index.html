@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+    <head>
+		<title>CodeMirror Editor Test</title>
+		
+		<!-- CORE -->
+		<link rel="stylesheet" href="webjars/webix/4.0.8/webix.css">
+		<script src="webjars/webix/4.0.8/webix.js"></script>
+    </head>
+	<body >
+		<script type="text/javascript">
+		webix.ready(function(){
+		    webix.ui({
+		    	type:"line",
+		    	rows: [
+		    		{ view:"toolbar", elements:[
+		    			{ view:"button", id:"add-id", value:"Add", width: 70, css:"button_primary button_raised"},
+		    			{ view:"button", value:"Delete", width: 70 },
+		    			{ view:"button", value:"Update", width: 70 },
+		    			{ view:"button", value:"Clear Form", width: 85 }]
+		    		},
+		    		{ cols:[
+		    			{ template: "<div id='adb'></div>"}, 
+		    			{ view:"property",  id:"sets", width:300,
+			    		    elements:[
+			    		       { label:"Layout", type:"label"},
+			    		       { label:"Data url", type:"text", id:"url"},
+			    		       { label:"Data type", type:"select", options:["json","xml","csv"], id:"type"},
+			    		       { label:"Use JSONP", type:"checkbox", id:"jsonp"}
+			    		    ]
+			    		} ]
+		    		}
+		    		
+		    	]
+		    });
+		    $$('add-id').attachEvent('onItemClick', function(id) {
+		    	alert('Press');
+		    })
+		});
+		</script>
+	</body>
+</html>
