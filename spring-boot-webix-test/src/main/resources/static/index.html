@@ -59,7 +59,21 @@
 			    		
 			    		{ view: 'tree', id: "treeId", data: treedata ,width:300, select: true},
 			    		{ view: "resizer"},
-		    			{ template: "<div id='adb'></div>"}, 
+			    		{
+			    			  view: "tabview",
+			    			  multiview: {
+			    				  fitBiggest:true
+			    				},
+			    			  cells: [
+			    			    {
+			    			      header: "List",
+			    			      width: 100
+			    			    },
+			    			    {
+			    			      header: "Form"
+			    			    }
+			    			  ]
+			    			}, 
 		    			{ view: "resizer"},
 		    			{ view:"property",  id:"sets", width:300,
 			    		    elements:[
