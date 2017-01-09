@@ -50,9 +50,11 @@
 			$log.debug('Executando fn.')
 			//notificationSV.show('Teste Fora')
 			var $notification = notificationSV;
-			var fn = new Function('templates', '$notification',editors['fnExecute'].getValue());
-			var afn = angular.bind(this, fn, templates, $notification);
+			var $values = {};
+			var fn = new Function('templates', '$values', '$notification',editors['fnExecute'].getValue());
+			var afn = angular.bind(this, fn, templates, $values, $notification);
 			afn();
+			console.log($values);
 		}
 	}
 })();
