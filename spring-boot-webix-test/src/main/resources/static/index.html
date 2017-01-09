@@ -6,12 +6,22 @@
 		<!-- CORE -->
 		<!-- 
 		<link rel="stylesheet" href="/material-design-skin-4.1.0/skins/material.css">
+		<link rel="stylesheet" href="webjars/webix/4.0.8/skins/metro.css">
 		 -->
 		<link rel="stylesheet" href="webjars/webix/4.0.8/webix.css">
 		<script src="webjars/webix/4.0.8/webix.js"></script>
     </head>
 	<body >
 		<script type="text/javascript">
+		var treedata = [
+			  { id: "1", value: "Book 1", data: [
+			    { id: "1.1", value: "Part 1" },
+			    { id: "1.2", value: "Part 2" }
+			  ]},
+			  { id: "2", value: "Book 2", data: [
+			    { id: "2.1", value: "Part 1" }
+			  ]}
+			];
 		webix.ready(function(){
 		    webix.ui({
 		    	type:"line",
@@ -23,6 +33,8 @@
 		    			{ view:"button", value:"Clear Form", width: 85 }]
 		    		},
 		    		{ cols:[
+			    		{view: 'tree', data: treedata ,width:300},
+			    		{ view: "resizer"},
 		    			{ template: "<div id='adb'></div>"}, 
 		    			{ view: "resizer"},
 		    			{ view:"property",  id:"sets", width:300,
