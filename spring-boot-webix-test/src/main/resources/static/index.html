@@ -5,10 +5,13 @@
 		
 		<!-- CORE -->
 		<!-- 
-		<link rel="stylesheet" href="/material-design-skin-4.1.0/skins/material.css">
-		<link rel="stylesheet" href="webjars/webix/4.0.8/skins/metro.css">
-		 -->
 		<link rel="stylesheet" href="webjars/webix/4.0.8/webix.css">
+		<link rel="stylesheet" href="webjars/webix/4.0.8/skins/metro.css">
+		<link rel="stylesheet" href="/material-design-skin-4.1.0/skins/material.css">
+		<link rel="stylesheet" href="webjars/webix/4.0.8/skins/air.css">
+		<link rel="stylesheet" href="webjars/webix/4.0.8/skins/web.css">
+		 -->
+		<link rel="stylesheet" href="webjars/webix/4.0.8/skins/compact.css">
 		<script src="webjars/webix/4.0.8/webix.js"></script>
     </head>
 	<body >
@@ -30,10 +33,30 @@
 		    			{ view:"button", id:"add-id", value:"Add", width: 70, css:"button_primary button_raised"},
 		    			{ view:"button", value:"Delete", width: 70 },
 		    			{ view:"button", value:"Update", width: 70 },
-		    			{ view:"button", value:"Clear Form", width: 85 }]
+		    			{ view:"button", value:"Clear Form", width: 85 },
+		    			{view:"menu",
+                data:[
+					{ id:"1",value:"Translate...", submenu:[
+						"English", 
+						{ value:"Slavic...", submenu:[
+							"Belarusian", "Russian", "Ukrainian"
+						]},
+						"German"
+					]},
+					{ id:"2",value:"Post...", submenu:[ "Facebook", "Google+", "Twitter" ]},
+					{ id:"3",value:"Info" }
+				],
+				on:{
+					onMenuItemClick:function(id){
+						webix.message("Click: "+this.getMenuItem(id).value);
+					}
+				},
+                type:{
+                    subsign:true
+                }}]
 		    		},
 		    		{ cols:[
-			    		{view: 'tree', data: treedata ,width:300},
+			    		{view: 'tree', id: "treeId", data: treedata ,width:300, select: true},
 			    		{ view: "resizer"},
 		    			{ template: "<div id='adb'></div>"}, 
 		    			{ view: "resizer"},
@@ -51,7 +74,14 @@
 		    });
 		    $$('add-id').attachEvent('onItemClick', function(id) {
 		    	alert('Press');
-		    })
+		    });
+
+		    $$("treeId").attachEvent("onAfterSelect",function(id){
+		    	  item = this.getItem(id);
+		    	  console.log(item);
+		    	});
+
+		    
 		});
 		</script>
 	</body>
