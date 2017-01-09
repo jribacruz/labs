@@ -4,7 +4,10 @@
 		<title>CodeMirror Editor Test</title>
 		
 		<!-- CORE -->
+		<!-- 
 		<link rel="stylesheet" href="webjars/webix/4.0.8/webix.css">
+		 -->
+		<link rel="stylesheet" href="/material-design-skin-4.1.0/skins/material.css">
 		<script src="webjars/webix/4.0.8/webix.js"></script>
     </head>
 	<body >
@@ -21,6 +24,7 @@
 		    		},
 		    		{ cols:[
 		    			{ template: "<div id='adb'></div>"}, 
+		    			{ view: "resizer"},
 		    			{ view:"property",  id:"sets", width:300,
 			    		    elements:[
 			    		       { label:"Layout", type:"label"},
