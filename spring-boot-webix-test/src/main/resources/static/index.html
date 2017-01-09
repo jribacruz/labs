@@ -77,7 +77,7 @@
 		    	alert('Press');
 		    });
 
-		    $$("treeId").attachEvent("onAfterSelect",function(id){
+		    $$("treeId").attachEvent("onItemDblClick",function(id){
 		    	  item = this.getItem(id);
 		    	  console.log(item);
 		    	});
