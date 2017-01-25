@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 const appRoutes: Routes = [
     { path: 'atividades', component: AtividadeComponent },
     { path: 'vistorias', component: VistoriaComponent },
-    { path: '', redirectTo: '/heroes', pathMatch: 'full' },
+    { path: '', redirectTo: '/atividades', pathMatch: 'full' },
 ];
 
 @NgModule({

@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
-import { CovalentCoreModule } from '@covalent/core';
+import { CovalentCoreModule, CovalentLayoutModule } from '@covalent/core';
 import { AtividadeComponent } from './atividade/atividade/atividade.component';
 import { VistoriaComponent } from './atividade/vistoria/vistoria.component';
 
@@ -22,6 +22,7 @@ import { VistoriaComponent } from './atividade/vistoria/vistoria.component';
     HttpModule,
     MaterialModule.forRoot(),
     CovalentCoreModule.forRoot(),
+    CovalentLayoutModule.forRoot(),
     AppRoutingModule
   ],
   providers: [],
