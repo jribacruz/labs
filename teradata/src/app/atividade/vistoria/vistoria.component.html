@@ -1,9 +1,17 @@
 <div class="md-content">
 	<md-card>
 		<md-card-content>
-			<p>
-			  vistoria works!
-			</p>
+			<td-data-table
+			  [data]="basicData"
+			  [columns]="columns"
+			  selectable="true">
+			  <template tdDataTableTemplate="type" let-value="value" let-row="row" let-column="column">
+			    <div layout="row">
+			      <span flex>{{value}}</span>
+			      <md-icon>star</md-icon>
+			    </div>
+			  </template>
+			</td-data-table>
 		</md-card-content>
 	</md-card>
 </div>
