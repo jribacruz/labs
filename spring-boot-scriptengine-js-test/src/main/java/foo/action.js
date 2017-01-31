@@ -1,3 +1,5 @@
-
-
-print($template.get('dao'));
+var action = {
+	execute : function() {
+		print('Hello');
+	}
+}

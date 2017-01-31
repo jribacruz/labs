@@ -27,11 +27,17 @@ public class SpringBootScriptengineJsTestApplication implements CommandLineRunne
 		ScriptEngine engine = manager.getEngineByName("nashorn");
 		Bindings bindings = engine.createBindings();
 		bindings.put("$template", new TemplateService());
+		//bindings.put("Action", Action.class);
 		// bindings.put("context", new
 		// FileReader("src/main/java/foo/data.json"));
-		engine.setBindings(bindings, ScriptContext.ENGINE_SCOPE);
+		engine.setBindings(bindings, ScriptContext.GLOBAL_SCOPE);
 		engine.eval(new FileReader("src/main/java/foo/action.js"));
-		// Invocable invocable = (Invocable) engine;
+		
+		Object object = engine.get("action");
+		
+		Invocable invocable = (Invocable) engine;
+		Action action = invocable.getInterface(object, Action.class);
+		action.execute();
 		// invocable.invokeMethod("action", "prepare");
 	}
 }
