@@ -38,6 +38,7 @@ public class SpringBootScriptengineJsTestApplication implements CommandLineRunne
 		Invocable invocable = (Invocable) engine;
 		Action action = invocable.getInterface(object, Action.class);
 		action.execute();
+		action.prompting();
 		// invocable.invokeMethod("action", "prepare");
 	}
 }
