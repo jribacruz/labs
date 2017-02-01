@@ -24,6 +24,6 @@ public class TemplateService {
 	}
 
 	public EClass get(String name) {
-		return new EClass();
+		return new EClass("XXX");
 	}
 }

@@ -9,5 +9,6 @@ var action = {
         });
         //$template.merge('template:/dao');
         print('Hello');
+        print(eclass.getName());
     }
 }
