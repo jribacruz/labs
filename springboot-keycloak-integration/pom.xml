@@ -41,7 +41,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!-- 
 		<dependency>
 			<groupId>org.keycloak</groupId>
 			<artifactId>keycloak-spring-boot-adapter</artifactId>
@@ -52,7 +51,6 @@
 			<artifactId>keycloak-tomcat8-adapter</artifactId>
 			<version>2.5.1.Final</version>
 		</dependency>
-		 -->
 
 	</dependencies>
 

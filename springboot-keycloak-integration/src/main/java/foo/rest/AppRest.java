@@ -12,9 +12,15 @@ public class AppRest {
 
 	private Logger log = LoggerFactory.getLogger(AppRest.class);
 
+	@RequestMapping(method = RequestMethod.GET, path = "/api/mngt/info")
+	public ResponseEntity<?> retrictedEndpoint() {
+		log.info("[retrictedEndpoint] Chamando método...");
+		return ResponseEntity.ok().build();
+	}
+	
 	@RequestMapping(method = RequestMethod.GET, path = "/api/info")
-	public ResponseEntity<?> endpoint() {
-		log.info("[endpoint] Chamando método...");
+	public ResponseEntity<?> publicEndpoint() {
+		log.info("[publicEndpoint] Chamando método...");
 		return ResponseEntity.ok().build();
 	}
 }
