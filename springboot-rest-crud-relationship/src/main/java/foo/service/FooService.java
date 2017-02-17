@@ -23,11 +23,16 @@ public class FooService implements Serializable {
 
 	@Transactional
 	public Foo insert(Foo foo) {
+		foo.getBars().stream().filter(bar -> bar.getId() != null);
 		return fooRepository.save(foo);
 	}
 
 	public List<Foo> findAll() {
 		return fooRepository.findAll();
+	}
+
+	public Foo find(Long id) {
+		return fooRepository.findOne(id);
 	}
 
 }

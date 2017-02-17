@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Foo implements Serializable {
 
@@ -20,13 +22,14 @@ public class Foo implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 
 	@Column
 	private String name;
 
-	@OneToMany(mappedBy = "foo")
+	@OneToMany(mappedBy = "foo", cascade = javax.persistence.CascadeType.MERGE)
+	@JsonBackReference
 	private List<Bar> bars;
 
 	public Long getId() {
