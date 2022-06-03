@@ -15,7 +15,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.4.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
 	<properties>
@@ -40,7 +40,7 @@
 		<dependency>
 			<groupId>net.sourceforge.dynamicreports</groupId>
 			<artifactId>dynamicreports-core</artifactId>
-			<version>5.0.0</version>
+			<version>6.11.0</version>
 		</dependency>
 
 	</dependencies>
