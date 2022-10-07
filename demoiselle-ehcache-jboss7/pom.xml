@@ -10,9 +10,9 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name></name>
-	<description></description>
-	<url></url>
+	<name/>
+	<description/>
+	<url/>
 
 	<parent>
 		<groupId>br.gov.frameworkdemoiselle</groupId>
@@ -50,7 +50,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-ehcache</artifactId>
-			<version>4.1.7.Final</version>
+			<version>5.4.24.Final</version>
 		</dependency>
 
 
