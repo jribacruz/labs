@@ -9,9 +9,9 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name></name>
-	<description></description>
-	<url></url>
+	<name/>
+	<description/>
+	<url/>
 
 	<parent>
 		<groupId>br.gov.frameworkdemoiselle</groupId>
@@ -37,7 +37,7 @@
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
 			<scope>compile</scope>
-			<version>5.2</version>
+			<version>12.0.0</version>
 		</dependency>
 
 		<dependency>
